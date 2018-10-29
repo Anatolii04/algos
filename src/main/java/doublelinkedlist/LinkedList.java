@@ -5,5 +5,6 @@ public interface LinkedList<T> {
     void addFirst(T t);
     void removeFirst();
     void removeLast();
+    LinkedListImpl.Node<T> get(int index);
 
 }

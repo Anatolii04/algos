@@ -51,8 +51,31 @@ public class LinkedListImpl<T> implements LinkedList<T>{
             prev.nextNode = null;
     }
 
+    public Node<T> get(int index) {
+        Node x;
+        int i;
+        if (index < this.size/2) {
+            x = this.first;
 
-    public static class Node<T> {
+            for(i = 0; i < index; ++i) {
+                x = x.nextNode;
+            }
+
+            return x;
+        } else {
+            x = this.last;
+
+            for(i = this.size - 1; i > index; --i) {
+                x = x.prevNode;
+            }
+
+            return x;
+        }
+    }
+
+
+
+    static class Node<T> {
         T element;
         Node<T> nextNode;
         Node<T> prevNode;
@@ -63,4 +86,5 @@ public class LinkedListImpl<T> implements LinkedList<T>{
             this.prevNode = prevNode;
         }
     }
+
 }
