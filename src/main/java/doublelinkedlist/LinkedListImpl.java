@@ -22,7 +22,7 @@ public class LinkedListImpl<T> implements LinkedList<T>{
 
     public void addFirst(T t) {
         Node<T> e = this.first;
-        Node<T> newNode = new Node<T>(null, t, e);
+        Node<T> newNode = new Node<>(null, t, e);
         this.first = newNode;
         if(e == null)
             last = newNode;
@@ -35,24 +35,30 @@ public class LinkedListImpl<T> implements LinkedList<T>{
         T n = this.first.element;
         Node<T> next = this.first.nextNode;
         this.first.nextNode = null;
-        this.first = null;
+        this.first.element = null;
         this.first = next;
         if(next == null)
             this.last = null;
         else
             this.first.prevNode = null;
+        size--;
     }
 
     public void removeLast() {
         T n = this.last.element;
         Node<T> prev = this.last.prevNode;
+        this.last.element = null;
         this.last.prevNode = null;
-        this.last = null;
         this.last = prev;
         if(prev == null)
             this.first = null;
         else
             prev.nextNode = null;
+        size--;
+    }
+
+    public T getElement(int index){
+        return get(index).element;
     }
 
     public Node<T> get(int index) {
@@ -77,10 +83,15 @@ public class LinkedListImpl<T> implements LinkedList<T>{
         }
     }
 
-    T remove(Node<T> x) {
+    public T rm(int index){
+        return remove(get(index));
+    }
+
+    public T remove(Node<T> x) {
         final T element = x.element;
         final Node<T> next = x.nextNode;
         final Node<T> prev = x.prevNode;
+
 
         if (prev == null) {
             this.first = next;
@@ -101,7 +112,13 @@ public class LinkedListImpl<T> implements LinkedList<T>{
         return element;
     }
 
+    public Node<T> getFirst() {
+        return first;
+    }
 
+    public Node<T> getLast() {
+        return last;
+    }
 
     static class Node<T> {
         T element;

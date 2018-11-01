@@ -6,5 +6,6 @@ public interface LinkedList<T> {
     void removeFirst();
     void removeLast();
     LinkedListImpl.Node<T> get(int index);
+    T remove(LinkedListImpl.Node<T> x);
 
 }
