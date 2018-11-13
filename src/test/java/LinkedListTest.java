@@ -1,5 +1,5 @@
 import doublelinkedlist.LinkedListImpl;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
