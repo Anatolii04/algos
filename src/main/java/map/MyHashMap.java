@@ -277,6 +277,7 @@ public class MyHashMap<K,Z> {
         Node<K,Z> prev = table[i];
         Node<K,Z> e = prev;
 
+
         while (e != null) {
             Node<K,Z> next = e.next;
             Object k;
