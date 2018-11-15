@@ -1,4 +1,4 @@
-import doublelinkedlist.LinkedListImpl;
+import lists.MyLinkedListImpl;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,7 +8,7 @@ public class LinkedListTest {
 
     @Test
     public void testAddFirst(){
-        LinkedListImpl<String> list = new LinkedListImpl<String>();
+        MyLinkedListImpl<String> list = new MyLinkedListImpl<String>();
         list.addFirst("1");
         list.addFirst("2");
         list.addFirst("3");
@@ -16,14 +16,14 @@ public class LinkedListTest {
     }
     @Test
     public void testAddLast(){
-        LinkedListImpl<String> list = new LinkedListImpl<String>();
+        MyLinkedListImpl<String> list = new MyLinkedListImpl<String>();
         list.addLast("1");
         list.addLast("2");
         assertThat(list.getSize()).isEqualTo(2);
     }
     @Test
     public void testAddLasteAndRemoveFirst(){
-        LinkedListImpl<String> list = new LinkedListImpl<>();
+        MyLinkedListImpl<String> list = new MyLinkedListImpl<>();
         list.addLast("1");
         assertThat(list.getFirst()).isNotNull();
         list.removeFirst();
@@ -32,7 +32,7 @@ public class LinkedListTest {
     }
     @Test
     public void testAddFirstAndRemoveLast(){
-        LinkedListImpl<String> list = new LinkedListImpl<>();
+        MyLinkedListImpl<String> list = new MyLinkedListImpl<>();
         list.addFirst("1");
         assertThat(list.getLast()).isNotNull();
         list.removeLast();
@@ -42,7 +42,7 @@ public class LinkedListTest {
 
     @Test
     public void testRemove(){
-        LinkedListImpl<String> list = new LinkedListImpl<>();
+        MyLinkedListImpl<String> list = new MyLinkedListImpl<>();
         list.addFirst("1");
         list.rm(1);
         assertThat(list.getSize()).isEqualTo(0);
@@ -50,7 +50,7 @@ public class LinkedListTest {
 
     @Test
     public void testGet(){
-        LinkedListImpl<String> list = new LinkedListImpl<>();
+        MyLinkedListImpl<String> list = new MyLinkedListImpl<>();
         list.addFirst("1");
         list.addFirst("2");
         list.addFirst("3");

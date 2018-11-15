@@ -1,6 +1,6 @@
-package doublelinkedlist;
+package lists;
 
-public class LinkedListImpl<T> implements LinkedList<T>{
+public class MyLinkedListImpl<T> implements MyLinkedList<T> {
     int size;
     Node<T> first;
     Node<T> last;
