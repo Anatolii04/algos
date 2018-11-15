@@ -1,5 +1,6 @@
 package map;
 
+
 public class MyHashMap<K,Z> {
     static final Node<?,?>[] EMPTY_TABLE = {};
     MyHashMap.Node<K,Z>[] table = (MyHashMap.Node<K,Z>[]) EMPTY_TABLE;
@@ -89,6 +90,8 @@ public class MyHashMap<K,Z> {
             this.next = next;
         }
         void recordAccess(MyHashMap<K,Z> m) {
+        }
+        void recordRemoval(MyHashMap<K,Z> m) {
         }
 
         public final K getKey() {
@@ -258,5 +261,39 @@ public class MyHashMap<K,Z> {
         Node<K,Z> entry = getEntry(key);
 
         return null == entry ? null : entry.getValue();
+    }
+
+    public Z remove(Object key) {
+        MyHashMap.Node<K,Z> e = removeEntryForKey(key);
+        return (e == null ? null : e.val);
+    }
+
+    final Node<K,Z> removeEntryForKey(Object key) {
+        if (size == 0) {
+            return null;
+        }
+        int hash = (key == null) ? 0 : hash(key);
+        int i = indexFor(hash, table.length);
+        Node<K,Z> prev = table[i];
+        Node<K,Z> e = prev;
+
+        while (e != null) {
+            Node<K,Z> next = e.next;
+            Object k;
+            if (e.hash == hash &&
+                    ((k = e.key) == key || (key != null && key.equals(k)))) {
+                size--;
+                if (prev == e)
+                    table[i] = next;
+                else
+                    prev.next = next;
+                e.recordRemoval(this);
+                return e;
+            }
+            prev = e;
+            e = next;
+        }
+
+        return e;
     }
 }
